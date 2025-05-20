@@ -1,0 +1,7 @@
+.selection-rect {
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    z-index: 1000;
+} 
