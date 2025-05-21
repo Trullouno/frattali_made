@@ -68,7 +68,7 @@
             font-family: 'Roboto Condensed';
             font-weight: bolder;
             margin-bottom: 60px;
-            text-align: center;
+            text-align: left ;
         }
 
         h1 {
@@ -81,14 +81,15 @@
         .intro {
             font-family: 'Space Mono';
             max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
+            margin: 0;
+            text-align: left;
         }
 
         .fractal-container {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            width: 400px;  /* Add this line */
         }
 
         .fractal-canvas-container {
@@ -97,8 +98,8 @@
             border: 1px solid #000000;
             position: relative;
             overflow: hidden;
-            width: 400px;   /* increased from 200px */
-            height: 400px;  /* increased from 200px */
+            width: 400px;
+            height: 400px;
         }
 
         .selection-rect {
@@ -116,12 +117,13 @@
 
         .controls {
             font-size: 14px;
+            width: 100%;  /* Add this line */
         }
 
         .control-group {
             margin-bottom: 15px;
             display: grid;
-            grid-template-columns: auto auto 1fr;
+            grid-template-columns: 1/3fr;
             align-items: left;
             gap: 15px;
         }
@@ -138,7 +140,7 @@
         }
 
         .fractal-name {
-            font-size: 20pt;
+            font-size: 15pt;
             margin-bottom: 15px;
         }
 
@@ -364,8 +366,38 @@
 
                     <p>Il termine "frattale" fu coniato nel 1975 da Benoît Mandelbrot, derivando dalla parola latina "fractus" (rotto, spezzato). Queste forme, che sembrano a prima vista irregolari e caotiche, seguono in realtà regole matematiche precise e si rivelano fondamentali per comprendere molti fenomeni naturali e artificiali.</p>
                 </div>
+            
+                                <div class="text-content">
+                    <h2>Città frattali</h2>
+                    <p>I frattali sono forme geometriche che si ripetono nella loro struttura su scale diverse. La loro caratteristica principale è l'auto-similarità: ingrandendo una qualsiasi parte di un frattale, si ottiene una figura simile all'originale. Questi pattern matematici si trovano spesso in natura, come nei fiocchi di neve, nelle foglie delle felci, nella struttura dei broccoli romaneschi, nelle strutture di alcune città e in alcuni organi del corpo umano. </p>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <img src="assets/fractals_nature.jpg.653x0_q80_crop-smart.jpg" alt="Fractal patterns in lungs" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/city_rome.jpg" alt="Fractal city" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/lungs.jpg" alt="Fractal patterns in nature" class="gallery-image">
+                        </div>
+                    </div>
 
+                    <p>Il termine "frattale" fu coniato nel 1975 da Benoît Mandelbrot, derivando dalla parola latina "fractus" (rotto, spezzato). Queste forme, che sembrano a prima vista irregolari e caotiche, seguono in realtà regole matematiche precise e si rivelano fondamentali per comprendere molti fenomeni naturali e artificiali.</p>
+                </div>
+** FRATTALI
                 <div class="fractal-row">
+                    <div class="text-content">
+                        <h2>Curva di Koch</h2>
+                        <p>La curva di Koch è una delle prime curve frattali mai scoperte, creata dal matematico svedese Helge von Koch nel 1904. Partendo da una semplice linea retta, ad ogni iterazione ogni segmento viene sostituito da quattro segmenti più piccoli, creando un pattern sempre più complesso. La particolarità di questa curva è che, nonostante occupi uno spazio finito, la sua lunghezza diventa infinita dopo infinite iterazioni.</p>
+                        <div class="math-equation">
+                            <p>Per ogni iterazione \(n\), la lunghezza \(L_n\) della curva è:</p>
+                            <p>\[L_n = L_0 \left(\frac{4}{3}\right)^n\]</p>
+                            <p>dove \(L_0\) è la lunghezza iniziale del segmento.</p>
+                            <p>La dimensione frattale \(D\) della curva di Koch è:</p>
+                            <p>\[D = \frac{\log 4}{\log 3} \approx 1.262\]</p>
+                        </div>
+                    </div>
                     <div class="fractal-container">
                         <div class="fractal-canvas-container">
                             <canvas id="kochCurveCanvas"></canvas>
@@ -380,20 +412,20 @@
                             <button id="kochCurveReset">reset view</button>
                         </div>
                     </div>
-                    <div class="text-content">
-                        <h2>Curva di Koch</h2>
-                        <p>La curva di Koch è una delle prime curve frattali mai scoperte, creata dal matematico svedese Helge von Koch nel 1904. Partendo da una semplice linea retta, ad ogni iterazione ogni segmento viene sostituito da quattro segmenti più piccoli, creando un pattern sempre più complesso. La particolarità di questa curva è che, nonostante occupi uno spazio finito, la sua lunghezza diventa infinita dopo infinite iterazioni.</p>
-                        <div class="math-equation">
-                            <p>Per ogni iterazione \(n\), la lunghezza \(L_n\) della curva è:</p>
-                            <p>\[L_n = L_0 \left(\frac{4}{3}\right)^n\]</p>
-                            <p>dove \(L_0\) è la lunghezza iniziale del segmento.</p>
-                            <p>La dimensione frattale \(D\) della curva di Koch è:</p>
-                            <p>\[D = \frac{\log 4}{\log 3} \approx 1.262\]</p>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="fractal-row">
+                    <div class="text-content">
+                        <h2>Fiocco di Neve di Koch</h2>
+                        <p>Il fiocco di neve di Koch è creato applicando la curva di Koch ai lati di un triangolo equilatero. Ad ogni iterazione, ogni lato del triangolo viene sostituito da quattro segmenti più piccoli, creando una forma che ricorda un fiocco di neve. La particolarità di questa figura è che, mentre il suo perimetro cresce all'infinito, l'area rimane sempre finita.</p>
+                        <div class="math-equation">
+                            <p>L'area \(A_n\) dopo \(n\) iterazioni è:</p>
+                            <p>\[A_n = A_0 \left(1 + \frac{3}{5}\sum_{k=1}^n \left(\frac{4}{9}\right)^k\right)\]</p>
+                            <p>dove \(A_0\) è l'area del triangolo iniziale.</p>
+                            <p>Il perimetro \(P_n\) cresce come:</p>
+                            <p>\[P_n = P_0 \left(\frac{4}{3}\right)^n\]</p>
+                        </div>
+                    </div>
                     <div class="fractal-container">
                         <div class="fractal-canvas-container">
                             <canvas id="kochSnowflakeCanvas"></canvas>
@@ -408,20 +440,13 @@
                             <button id="kochSnowflakeReset">reset view</button>
                         </div>
                     </div>
-                    <div class="text-content">
-                        <h2>Fiocco di Neve di Koch</h2>
-                        <p>Il fiocco di neve di Koch è creato applicando la curva di Koch ai lati di un triangolo equilatero. Ad ogni iterazione, ogni lato del triangolo viene sostituito da quattro segmenti più piccoli, creando una forma che ricorda un fiocco di neve. La particolarità di questa figura è che, mentre il suo perimetro cresce all'infinito, l'area rimane sempre finita.</p>
-                        <div class="math-equation">
-                            <p>L'area \(A_n\) dopo \(n\) iterazioni è:</p>
-                            <p>\[A_n = A_0 \left(1 + \frac{3}{5}\sum_{k=1}^n \left(\frac{4}{9}\right)^k\right)\]</p>
-                            <p>dove \(A_0\) è l'area del triangolo iniziale.</p>
-                            <p>Il perimetro \(P_n\) cresce come:</p>
-                            <p>\[P_n = P_0 \left(\frac{4}{3}\right)^n\]</p>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="fractal-row">
+                    <div class="text-content">
+                        <h2>Fiocco di Neve Invertito</h2>
+                        <p>Il fiocco di neve invertito è una variante del fiocco di Koch dove, invece di aggiungere triangoli verso l'esterno, li aggiungiamo verso l'interno. Questa semplice modifica crea un pattern completamente diverso che converge verso il centro, dimostrando come piccole variazioni nelle regole di costruzione possano portare a risultati molto diversi.</p>
+                    </div>
                     <div class="fractal-container">
                         <div class="fractal-canvas-container">
                             <canvas id="kochInvertedCanvas"></canvas>
@@ -436,13 +461,19 @@
                             <button id="kochInvertedReset">reset view</button>
                         </div>
                     </div>
-                    <div class="text-content">
-                        <h2>Fiocco di Neve Invertito</h2>
-                        <p>Il fiocco di neve invertito è una variante del fiocco di Koch dove, invece di aggiungere triangoli verso l'esterno, li aggiungiamo verso l'interno. Questa semplice modifica crea un pattern completamente diverso che converge verso il centro, dimostrando come piccole variazioni nelle regole di costruzione possano portare a risultati molto diversi.</p>
-                    </div>
                 </div>
 
                 <div class="fractal-row">
+                    <div class="text-content">
+                        <h2>Triangolo di Sierpinski</h2>
+                        <p>Il triangolo di Sierpinski è un frattale creato dal matematico Wacław Sierpiński nel 1915. Partendo da un triangolo equilatero, ad ogni iterazione viene rimosso il triangolo centrale, lasciando tre triangoli più piccoli. Il processo viene ripetuto su ciascuno di questi triangoli, creando un pattern che si ripete su scale sempre più piccole.</p>
+                        <div class="math-equation">
+                            <p>La dimensione frattale \(D\) del triangolo di Sierpinski è:</p>
+                            <p>\[D = \frac{\log 3}{\log 2} \approx 1.585\]</p>
+                            <p>L'area totale \(A_n\) dopo \(n\) iterazioni è:</p>
+                            <p>\[A_n = A_0 \left(\frac{3}{4}\right)^n\]</p>
+                        </div>
+                    </div>
                     <div class="fractal-container">
                         <div class="fractal-canvas-container">
                             <canvas id="sierpinskiCanvas"></canvas>
@@ -457,17 +488,17 @@
                             <button id="sierpinskiReset">reset view</button>
                         </div>
                     </div>
+                </div>                <div class="fractal-row">
                     <div class="text-content">
-                        <h2>Triangolo di Sierpinski</h2>
-                        <p>Il triangolo di Sierpinski è un frattale creato dal matematico Wacław Sierpiński nel 1915. Partendo da un triangolo equilatero, ad ogni iterazione viene rimosso il triangolo centrale, lasciando tre triangoli più piccoli. Il processo viene ripetuto su ciascuno di questi triangoli, creando un pattern che si ripete su scale sempre più piccole.</p>
+                        <h2>Insieme di Mandelbrot</h2>
+                        <p>L'insieme di Mandelbrot è probabilmente il frattale più famoso, scoperto da Benoît Mandelbrot nel 1980. È creato da una semplice formula matematica che, quando iterata, produce un pattern infinitamente complesso. La sua particolarità è che, ingrandendo qualsiasi parte del bordo, si trovano sempre nuove forme e dettagli, rendendolo uno degli oggetti matematici più affascinanti da esplorare.</p>
                         <div class="math-equation">
-                            <p>La dimensione frattale \(D\) del triangolo di Sierpinski è:</p>
-                            <p>\[D = \frac{\log 3}{\log 2} \approx 1.585\]</p>
-                            <p>L'area totale \(A_n\) dopo \(n\) iterazioni è:</p>
-                            <p>\[A_n = A_0 \left(\frac{3}{4}\right)^n\]</p>
+                            <p>L'insieme di Mandelbrot è definito dalla sequenza:</p>
+                            <p>\[z_{n+1} = z_n^2 + c\]</p>
+                            <p>dove \(z_0 = 0\) e \(c\) è un numero complesso.</p>
+                            <p>Un punto \(c\) appartiene all'insieme di Mandelbrot se la sequenza rimane limitata per \(n \to \infty\).</p>
                         </div>
                     </div>
-                </div>                <div class="fractal-row">
                     <div class="fractal-container">
                         <div class="fractal-canvas-container">
                             <canvas id="mandelbrotCanvas"></canvas>
@@ -482,16 +513,6 @@
                             <button id="mandelbrotReset">reset view</button>
                         </div>
                     </div>
-                    <div class="text-content">
-                        <h2>Insieme di Mandelbrot</h2>
-                        <p>L'insieme di Mandelbrot è probabilmente il frattale più famoso, scoperto da Benoît Mandelbrot nel 1980. È creato da una semplice formula matematica che, quando iterata, produce un pattern infinitamente complesso. La sua particolarità è che, ingrandendo qualsiasi parte del bordo, si trovano sempre nuove forme e dettagli, rendendolo uno degli oggetti matematici più affascinanti da esplorare.</p>
-                        <div class="math-equation">
-                            <p>L'insieme di Mandelbrot è definito dalla sequenza:</p>
-                            <p>\[z_{n+1} = z_n^2 + c\]</p>
-                            <p>dove \(z_0 = 0\) e \(c\) è un numero complesso.</p>
-                            <p>Un punto \(c\) appartiene all'insieme di Mandelbrot se la sequenza rimane limitata per \(n \to \infty\).</p>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="bibliography">
@@ -499,6 +520,7 @@
                     <ul>
                         <li>Mandelbrot, B. B. (1982). <i>The Fractal Geometry of Nature</i>. W.H. Freeman and Company.</li>
                         <li>Falconer, K. (2013). <i>Fractals: A Very Short Introduction</i>. Oxford University Press.</li>
+                        <li>Fractal Foundation. (n.d.). Fractal cities. Retrieved May 21, 2025, from https://fractalfoundation.org/OFC/OFC-12-3.html</li>
                         <li>Peitgen, H. O., & Richter, P. H. (1986). <i>The Beauty of Fractals</i>. Springer-Verlag.</li>
                         <li>Barnsley, M. F. (2012). <i>Fractals Everywhere</i>. Dover Publications.</li>
                         <li>von Koch, H. (1904). "Sur une courbe continue sans tangente, obtenue par une construction géométrique élémentaire". <i>Arkiv för Matematik</i>.</li>
@@ -507,12 +529,17 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <footer>
+    </div>    <footer>
         Tullio Natale 2025 Matematica per il design ISIA U
     </footer>
 
-    <script src="fractals.js"></script>
+    <script src="./fractals.js"></script>
+    <script>
+        // Add error handler for script loading
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            console.error('Error: ' + msg + '\nURL: ' + url + '\nLine: ' + lineNo + '\nColumn: ' + columnNo + '\nError object: ' + JSON.stringify(error));
+            return false;
+        };
+    </script>
 </body>
 </html>
