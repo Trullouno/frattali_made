@@ -4,32 +4,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const kochCurveCanvas = document.getElementById('kochCurveCanvas');
     const kochSnowflakeCanvas = document.getElementById('kochSnowflakeCanvas');
     const kochInvertedCanvas = document.getElementById('kochInvertedCanvas');
-    const sierpinskiCanvas = document.getElementById('sierpinskiCanvas');
-    const sierpinskiCurveCanvas = document.getElementById('sierpinskiCurveCanvas');
-    
+    const sierpinskiCanvas = document.getElementById('sierpinskiCanvas');    
     // Get iteration value displays
     const kochCurveIterationsValue = document.querySelector('#kochCurveIterations').previousElementSibling;
     const kochSnowflakeIterationsValue = document.querySelector('#kochSnowflakeIterations').previousElementSibling;
     const kochInvertedIterationsValue = document.querySelector('#kochInvertedIterations').previousElementSibling;
     const sierpinskiIterationsValue = document.querySelector('#sierpinskiIterations').previousElementSibling;
-    const sierpinskiCurveIterationsValue = document.querySelector('#sierpinskiCurveIterations').previousElementSibling;
     const mandelbrotIterationsValue = document.querySelector('#mandelbrotIterations').previousElementSibling;
     
     const mandelbrotCtx = mandelbrotCanvas.getContext('2d');
     const kochCurveCtx = kochCurveCanvas.getContext('2d');
     const kochSnowflakeCtx = kochSnowflakeCanvas.getContext('2d');
     const kochInvertedCtx = kochInvertedCanvas.getContext('2d');
-    const sierpinskiCtx = sierpinskiCanvas.getContext('2d');
-    const sierpinskiCurveCtx = sierpinskiCurveCanvas.getContext('2d');
-
+    const sierpinskiCtx = sierpinskiCanvas.getContext('2d');    
     // Track if each fractal has been rendered
     let mandelbrotRendered = false;
     let kochCurveRendered = false;
     let kochSnowflakeRendered = false;
     let kochInvertedRendered = false;
-    let sierpinskiRendered = false;
-    let sierpinskiCurveRendered = false;
-
+    let sierpinskiRendered = false;    
     // Function to mark canvas as rendered
     function markAsRendered(canvas) {
         canvas.closest('.fractal-canvas-container').classList.add('rendered');
@@ -81,14 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
         zoomAreaX: 0,
         zoomAreaY: 0,
         isDraggingZoom: false
-    };
-
-    let sierpinskiConfig = {
+    };    let sierpinskiConfig = {
         iterations: 4
-    };
-
-    let sierpinskiCurveConfig = {
-        iterations: 0
     };
 
     // Sierpinski Triangle rendering
@@ -205,89 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
             markAsRendered(sierpinskiCanvas);
         }
         renderSierpinski();
-    });
-
-    // Sierpinski Curve rendering
-    function drawSierpinskiCurve(x1, y1, x2, y2, x3, y3, iterations, ctx) {
-        if (iterations === 0) {
-            ctx.beginPath();
-            ctx.moveTo(x1, y1);
-            ctx.lineTo(x2, y2);
-            ctx.lineTo(x3, y3);
-            ctx.lineTo(x1, y1);
-            ctx.stroke();
-            return;
-        }
-
-        const mid1x = (x1 + x2) / 2;
-        const mid1y = (y1 + y2) / 2;
-        const mid2x = (x2 + x3) / 2;
-        const mid2y = (y2 + y3) / 2;
-        const mid3x = (x3 + x1) / 2;
-        const mid3y = (y3 + y1) / 2;
-
-        // Draw the three smaller triangles
-        drawSierpinskiCurve(x1, y1, mid1x, mid1y, mid3x, mid3y, iterations - 1, ctx);
-        drawSierpinskiCurve(mid1x, mid1y, x2, y2, mid2x, mid2y, iterations - 1, ctx);
-        drawSierpinskiCurve(mid3x, mid3y, mid2x, mid2y, x3, y3, iterations - 1, ctx);
-        
-        // Draw the connecting lines
-        ctx.beginPath();
-        ctx.moveTo(mid1x, mid1y);
-        ctx.lineTo(mid2x, mid2y);
-        ctx.lineTo(mid3x, mid3y);
-        ctx.lineTo(mid1x, mid1y);
-        ctx.stroke();
-    }
-
-    function renderSierpinskiCurve() {
-        const width = sierpinskiCurveCanvas.width;
-        const height = sierpinskiCurveCanvas.height;
-        const dpr = window.devicePixelRatio || 1;
-        
-        sierpinskiCurveCtx.clearRect(0, 0, width, height);
-        sierpinskiCurveCtx.strokeStyle = '#000000';
-        sierpinskiCurveCtx.lineWidth = 1;
-
-        // Calculate the size to maintain aspect ratio
-        const size = Math.min(width, height) * 0.7;
-        
-        // Calculate triangle points, accounting for dpr
-        const x1 = width / (2 * dpr);
-        const y1 = (height - size) / (2 * dpr);
-        const x2 = (width - size) / (2 * dpr);
-        const y2 = (height + size) / (2 * dpr);
-        const x3 = (width + size) / (2 * dpr);
-        const y3 = (height + size) / (2 * dpr);
-
-        drawSierpinskiCurve(x1, y1, x2, y2, x3, y3, sierpinskiCurveConfig.iterations, sierpinskiCurveCtx);
-    }
-
-    // Event listeners for Sierpinski curve controls
-    document.getElementById('sierpinskiCurveIterations').addEventListener('input', function() {
-        sierpinskiCurveConfig.iterations = parseInt(this.value);
-        sierpinskiCurveIterationsValue.textContent = this.value;
-        if (!sierpinskiCurveRendered) {
-            sierpinskiCurveRendered = true;
-            markAsRendered(sierpinskiCurveCanvas);
-        }
-        renderSierpinskiCurve();
-    });
-
-    document.getElementById('sierpinskiCurveReset').addEventListener('click', function() {
-        sierpinskiCurveConfig = {
-            iterations: 0
-        };
-        document.getElementById('sierpinskiCurveIterations').value = 0;
-        sierpinskiCurveIterationsValue.textContent = '0';
-        if (!sierpinskiCurveRendered) {
-            sierpinskiCurveRendered = true;
-            markAsRendered(sierpinskiCurveCanvas);
-        }
-        renderSierpinskiCurve();
-    });
-
-    // Render functions
+    });    // Render functions
     function renderMandelbrot() {
         const width = mandelbrotCanvas.width;
         const height = mandelbrotCanvas.height;
@@ -621,7 +526,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to update canvas dimensions with high DPI support
     function updateCanvasDimensions() {
-        const canvases = [mandelbrotCanvas, kochCurveCanvas, kochSnowflakeCanvas, kochInvertedCanvas, sierpinskiCanvas, sierpinskiCurveCanvas];
+        const canvases = [mandelbrotCanvas, kochCurveCanvas, kochSnowflakeCanvas, kochInvertedCanvas, sierpinskiCanvas];
         canvases.forEach(canvas => {
             const container = canvas.parentElement;
             const containerStyle = window.getComputedStyle(container);
@@ -640,9 +545,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transformation
             ctx.scale(dpr, dpr);
         });
-    }
-
-    // Update dimensions on window resize
+    }    // Update dimensions on window resize
     window.addEventListener('resize', () => {
         updateCanvasDimensions();
         renderMandelbrot();
@@ -650,7 +553,6 @@ document.addEventListener('DOMContentLoaded', function() {
         renderKochSnowflake();
         renderKochInverted();
         renderSierpinski();
-        renderSierpinskiCurve();
     });
 
     // Initial canvas size update and render
@@ -661,4 +563,4 @@ document.addEventListener('DOMContentLoaded', function() {
     renderSierpinski();
     renderSierpinskiCurve();
     renderMandelbrot();
-}); 
+});

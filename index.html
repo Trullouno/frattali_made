@@ -22,7 +22,7 @@
             color: #000000;
             line-height: 1.4;
             padding: 40px;
-            max-width: 2000px;
+            max-width: 1200px;
             margin: 0 auto;
             min-height: 100vh;
             display: flex;
@@ -30,26 +30,45 @@
         }
 
         .page-container {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
             flex: 1;
         }
 
         .content-column {
-            display: flex;
-            flex-direction: column;
+            width: 100%;
         }
 
-        .left-column {
-            width: 200px;
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .fractal-row {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-top: 1px solid #000;
+            padding: 40px 0;
+            margin: 0;
+        }
+
+        .fractal-row:first-of-type {
+            border-top: none;
+        }
+
+        .text-content:first-child {
+            border-top: none;
+            padding-top: 0;
         }
 
         header {
             font-family: 'Roboto Condensed';
-            font-weight:bolder;
-            margin: 0 0 0px 0;
-            flex-shrink: 0;
+            font-weight: bolder;
+            margin-bottom: 60px;
+            text-align: center;
         }
 
         h1 {
@@ -62,24 +81,8 @@
         .intro {
             font-family: 'Space Mono';
             max-width: 600px;
-            margin-bottom: 20px;
-        }
-
-        .main-container {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            flex: 1;
-            margin-bottom: 30px;
-            overflow-y: scroll;
-            height: calc(100vh - 200px);
-        }
-
-        .fractal-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px; /* increased gap for more space */
-            align-items: start;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .fractal-container {
@@ -339,12 +342,8 @@
         <div class="intro">
             queste sono visualizzazioni iterative di pattern matematici complessi.
             ogni pattern emerge da regole semplici ripetute all'infinito.
-            usa i controlli per esplorare diverse regioni e iterazioni.
         </div>
-    </header>
-
-    <div class="page-container">
-        <div class="left-column"></div>
+    </header>    <div class="page-container">
         <div class="content-column">
             <div class="main-container">
                 <div class="text-content">
@@ -372,9 +371,9 @@
                             <canvas id="kochCurveCanvas"></canvas>
                         </div>
                         <div class="controls">
-                            <div class="fractal-name">koch curve</div>
+                            <div class="fractal-name">Curva di Koch</div>
                             <div class="control-group">
-                                <label>iterations</label>
+                                <label>iterazioni</label>
                                 <div class="iterations">4</div>
                                 <input type="range" id="kochCurveIterations" min="0" max="7" value="4">
                             </div>
@@ -400,9 +399,9 @@
                             <canvas id="kochSnowflakeCanvas"></canvas>
                         </div>
                         <div class="controls">
-                            <div class="fractal-name">koch snowflake</div>
+                            <div class="fractal-name">Fiocco di neve di Koch</div>
                             <div class="control-group">
-                                <label>iterations</label>
+                                <label>iterazioni</label>
                                 <div class="iterations">4</div>
                                 <input type="range" id="kochSnowflakeIterations" min="0" max="7" value="4">
                             </div>
@@ -428,9 +427,9 @@
                             <canvas id="kochInvertedCanvas"></canvas>
                         </div>
                         <div class="controls">
-                            <div class="fractal-name">inverted snowflake</div>
+                            <div class="fractal-name">Fiocco di neve inverso di Koch</div>
                             <div class="control-group">
-                                <label>iterations</label>
+                                <label>iterazioni</label>
                                 <div class="iterations">4</div>
                                 <input type="range" id="kochInvertedIterations" min="0" max="7" value="4">
                             </div>
@@ -451,7 +450,7 @@
                         <div class="controls">
                             <div class="fractal-name">sierpinski triangle</div>
                             <div class="control-group">
-                                <label>iterations</label>
+                                <label>iterazioni</label>
                                 <div class="iterations">4</div>
                                 <input type="range" id="sierpinskiIterations" min="0" max="8" value="4">
                             </div>
@@ -468,38 +467,15 @@
                             <p>\[A_n = A_0 \left(\frac{3}{4}\right)^n\]</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="fractal-row">
-                    <div class="fractal-container">
-                        <div class="fractal-canvas-container">
-                            <canvas id="sierpinskiCurveCanvas"></canvas>
-                        </div>
-                        <div class="controls">
-                            <div class="fractal-name">sierpinski curve</div>
-                            <div class="control-group">
-                                <label>iterations</label>
-                                <div class="iterations">4</div>
-                                <input type="range" id="sierpinskiCurveIterations" min="0" max="8" value="4">
-                            </div>
-                            <button id="sierpinskiCurveReset">reset view</button>
-                        </div>
-                    </div>
-                    <div class="text-content">
-                        <h2>Curva di Sierpinski</h2>
-                        <p>La curva di Sierpinski è una variante del triangolo di Sierpinski che, invece di rimuovere triangoli, traccia una linea continua che attraversa tutti i punti della figura. Ad ogni iterazione, ogni segmento viene sostituito da tre segmenti più piccoli, creando un percorso che riempie progressivamente lo spazio del triangolo originale.</p>
-                    </div>
-                </div>
-
-                <div class="fractal-row">
+                </div>                <div class="fractal-row">
                     <div class="fractal-container">
                         <div class="fractal-canvas-container">
                             <canvas id="mandelbrotCanvas"></canvas>
                         </div>
                         <div class="controls">
-                            <div class="fractal-name">mandelbrot set</div>
+                            <div class="fractal-name">Insieme di Mandelbrot</div>
                             <div class="control-group">
-                                <label>iterations</label>
+                                <label>iterazioni</label>
                                 <div class="iterations">100</div>
                                 <input type="range" id="mandelbrotIterations" min="10" max="500" value="100">
                             </div>
