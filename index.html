@@ -80,7 +80,7 @@
         }
 
         h1 {
-            padding-left: 150px;
+            padding-left: 0px;
             font-family: 'Roboto Condensed';
             font-size: 32px;
             font-weight: bolder;
@@ -88,6 +88,7 @@
         }
 
         .intro {
+            padding-left: 150px;
             font-family: 'Space Mono';
             max-width: 600px;
             margin: 0;
@@ -221,13 +222,14 @@
 
         .text-content h2 {
             
-            padding-left:150px;
+            padding-left:0px;
             font-family: 'Roboto Condensed';
             margin-bottom: 12px;
             font-size: 50pt;
         }
 
         .text-content p {
+            padding-left:150px;
             font-size: 16pt;
             margin-bottom: 30px;
         }
@@ -306,7 +308,10 @@
             padding: 20px;
             background: #f8f8f8;
             font-family: 'Space Mono', monospace;
-    display: inline-block; 
+    display: flex;           /* Changed to flex */
+    flex-direction: column;  /* Added */
+    justify-content: center; /* Added for vertical centering */
+    align-items: center;     /* Added for horizontal centering */
             width: 600px;      
     min-width: 200px;   
         }
@@ -314,12 +319,12 @@
         .math-equation p {
             margin: 10px 0;
             font-size: 16px;
-            text-align:center;
-            vertical-align: middle;
+            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-             white-space: nowrap; 
+            white-space: nowrap;
+            width: 100%;            /* Added to ensure full width */
         }
 
         .image-gallery {
@@ -468,19 +473,29 @@
                         <h2>Antifiocco di neve di Koch</h2>
                         <p>l'antifiocco è una variante del fiocco di neve di Koch dove, invece di aggiungere triangoli verso l'esterno, li aggiungiamo verso l'interno. Questa semplice modifica crea un pattern completamente diverso che converge verso il centro, dimostrando come piccole variazioni nelle regole di costruzione possano portare a risultati molto diversi.</p>
                     </div>
-                    <div class="fractal-container">
-                        <div class="fractal-canvas-container">
-                            <canvas id="kochInvertedCanvas"></canvas>
-                        </div>
-                        <div class="controls">
-                            <div class="fractal-name">Antifiocco di neve di Koch</div>
-                            <div class="control-group">
-                                <label>iterazioni</label>
-                                <div class="iterations">4</div>
-                                <input type="range" id="kochInvertedIterations" min="0" max="7" value="4">
+                    <div class="fractal-content">
+                        <div class="fractal-container">
+                            <div class="fractal-canvas-container">
+                                <canvas id="kochInvertedCanvas"></canvas>
                             </div>
-                            <button id="kochInvertedReset">reset view</button>
+                            <div class="controls">
+                                <div class="fractal-name">Antifiocco di neve di Koch</div>
+                                <div class="control-group">
+                                    <label>iterazioni</label>
+                                    <div class="iterations">4</div>
+                                    <input type="range" id="kochInvertedIterations" min="0" max="7" value="4">
+                                </div>
+                                <button id="kochInvertedReset">reset view</button>
+                            </div>
                         </div>
+                        <div class="math-equation">
+    <p>Come nel fiocco di neve standard,<p>
+    <p>il perimetro \(P_n\) dopo \(n\) iterazioni è:</p>
+    <p>\[P_n = P_0 \left(\frac{4}{3}\right)^n\]</p>
+    <p>L'area \(A_n\) dell'antifiocco dopo \(n\) iterazioni è:</p>
+    <p>\[A_n = A_0 \left(1 - \frac{3}{5}\sum_{k=1}^n \left(\frac{4}{9}\right)^k\right)\]</p>
+    <p>dove \(A_0\) è l'area del triangolo iniziale.</p>
+</div>
                     </div>
                 </div>
 
