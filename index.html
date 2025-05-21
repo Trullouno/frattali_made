@@ -52,7 +52,7 @@
             flex-direction: column;
             gap: 20px;
             border-top: 1px solid #000;
-            padding: 40px 0;
+            padding: 25px 0;
             margin: 0;
         }
 
@@ -62,21 +62,15 @@
             gap: 20px;
             justify-content: flex-start;
             align-items: flex-start;
+            position: relative;  /* Add this */
         }
 
         .text-content {
             width: 100%;
         }
 
-        .math-equation {
-            margin: 0;
-            padding: 20px;
-            background: #f8f8f8;
-            border-left: 0.5px solid #000000;
-            font-family: 'Space Mono', monospace;
-            width: 400px;
-            align-self: flex-start;
-        }
+
+        
 
         header {
             font-family: 'Roboto Condensed';
@@ -126,8 +120,8 @@
         }
 
         canvas {
-            width: 100%;
-            height: 100%;
+            width: 600px;
+            height: 1435px;
         }
 
         .controls {
@@ -226,11 +220,11 @@
         }
 
         .text-content h2 {
-            ;
+            
             padding-left:150px;
             font-family: 'Roboto Condensed';
-            margin-bottom: 30px;
-            font-size: 28pt;
+            margin-bottom: 12px;
+            font-size: 50pt;
         }
 
         .text-content p {
@@ -306,19 +300,25 @@
         }
 
         .math-equation {
-            margin: 30px 0;
+            position: relative;
+    left: 300px;
+    height: 435px;
             padding: 20px;
             background: #f8f8f8;
-            border-left: 3px solid #000000;
             font-family: 'Space Mono', monospace;
-              display: inline-block; 
-              width: auto;          
-              min-width: 200px;   
+    display: inline-block; 
+            width: 600px;      
+    min-width: 200px;   
         }
 
         .math-equation p {
             margin: 10px 0;
             font-size: 16px;
+            text-align:center;
+            vertical-align: middle;
+            display: flex;
+            align-items: center;
+            justify-content: center;
              white-space: nowrap; 
         }
 
@@ -403,7 +403,6 @@
                     </div>
 
 <p>Le città frattali quindi assomiglino a modelli naturali come alberi, fiumi, sistemi nervosi e polmoni, in cui una struttura centrale si dirama in elementi più piccoli seguendo schemi di distribuzione simili. Questo non è solo esteticamente interessante, ma anche funzionale: favorisce la distribuzione efficiente di risorse, traffico e comunicazioni.</p>                </div>
-** FRATTALI
                 <div class="fractal-row">
                     <div class="text-content">
                         <h2>Curva di Koch</h2>
@@ -466,15 +465,15 @@
 
                 <div class="fractal-row">
                     <div class="text-content">
-                        <h2>Fiocco di neve invertito</h2>
-                        <p>Il fiocco di neve invertito è una variante del fiocco di neve di Koch dove, invece di aggiungere triangoli verso l'esterno, li aggiungiamo verso l'interno. Questa semplice modifica crea un pattern completamente diverso che converge verso il centro, dimostrando come piccole variazioni nelle regole di costruzione possano portare a risultati molto diversi.</p>
+                        <h2>Antifiocco di neve di Koch</h2>
+                        <p>l'antifiocco è una variante del fiocco di neve di Koch dove, invece di aggiungere triangoli verso l'esterno, li aggiungiamo verso l'interno. Questa semplice modifica crea un pattern completamente diverso che converge verso il centro, dimostrando come piccole variazioni nelle regole di costruzione possano portare a risultati molto diversi.</p>
                     </div>
                     <div class="fractal-container">
                         <div class="fractal-canvas-container">
                             <canvas id="kochInvertedCanvas"></canvas>
                         </div>
                         <div class="controls">
-                            <div class="fractal-name">Fiocco di neve invertito</div>
+                            <div class="fractal-name">Antifiocco di neve di Koch</div>
                             <div class="control-group">
                                 <label>iterazioni</label>
                                 <div class="iterations">4</div>
@@ -506,7 +505,7 @@
                             </div>
                         </div>
                         <div class="math-equation">
-                            <p>La dimensione frattale \(D\) del triangolo di Sierpinski è:</p>
+                            <p>La dimensione frattale \(D\) \del triangolo di Sierpinski è:</p>
                             <p>\[D = \frac{\log 3}{\log 2} \approx 1.585\]</p>
                             <p>L'area totale \(A_n\) dopo \(n\) iterazioni è:</p>
                             <p>\[A_n = A_0 \left(\frac{3}{4}\right)^n\]</p>
