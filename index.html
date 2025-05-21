@@ -337,6 +337,9 @@
         .gallery-item {
             flex: 1;
             max-width: 33.33%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .gallery-image {
@@ -346,6 +349,14 @@
             border: 1px solid #000000;
             filter: grayscale(100%);
             filter: contrast (2);
+        }
+
+        .gallery-caption {
+            font-family: 'Space Mono';
+            font-size: 12px;
+            text-align: left;
+            margin-top: 8px;
+            padding-left: 0;
         }
 
         @media (max-width: 768px) {
@@ -381,12 +392,15 @@
                     <div class="image-gallery">
                         <div class="gallery-item">
                             <img src="assets/fractals_nature.jpg.653x0_q80_crop-smart.jpg" alt="Fractal patterns in lungs" class="gallery-image">
+                            <span class="gallery-caption">Sezione di guscio di un nautilo.</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="assets/city_rome.jpg" alt="Fractal city" class="gallery-image">
+                            <img src="assets/broccoli.jpg" alt="Fractal city" class="gallery-image">
+                            <span class="gallery-caption">Broccoli romaneschi.</span>
                         </div>
                         <div class="gallery-item">
                             <img src="assets/lungs.jpg" alt="Fractal patterns in nature" class="gallery-image">
+                            <span class="gallery-caption">Albero bronchiale dei polmoni.</span>
                         </div>
                     </div>
 
@@ -397,13 +411,16 @@
                     <h2>Città frattali</h2>
 <p>Molte città storiche, soprattutto in Europa e nel Medio Oriente, mostrano caratteristiche frattali: strutture urbane autosimili a diverse scale. Questo significa che il modello complessivo della città si ripete nei suoi sottosistemi: la città è composta da villaggi, i villaggi da quartieri, i quartieri da isolati. Un esempio emblematico è Parigi, dove l’organizzazione stradale e la distribuzione dei servizi riflettono una struttura organica e multilivello. Sebbene le strade possano sembrare disposte in modo caotico, esse collegano direttamente i nodi vitali della città, creando percorsi più efficienti rispetto alle griglie regolari. Le città frattali si sviluppano nel tempo attraverso processi lenti e spontanei, frutto di decisioni individuali dei cittadini all’interno di un quadro di regole minime — spesso di tipo proscriptivo, ovvero norme che vietano solo ciò che è considerato inaccettabile, lasciando ampio spazio alla libertà progettuale.</p>                    <div class="image-gallery">
                         <div class="gallery-item">
-                            <img src="assets/fractals_nature.jpg.653x0_q80_crop-smart.jpg" alt="Fractal patterns in lungs" class="gallery-image">
+                            <img src="assets/fractal-karlsruhe.jpg" alt="Fractal patterns in lungs" class="gallery-image">
+                         <span class="gallery-caption">Vista aerea della città di Karlsruhe, in Germania.</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="assets/city_rome.jpg" alt="Fractal city" class="gallery-image">
+                            <img src="assets/Erbil.jpg" alt="Fractal city" class="gallery-image">
+                            <span class="gallery-caption">Vista aerea di Erbil, nel Kurdistan iracheno.</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="assets/lungs.jpg" alt="Fractal patterns in nature" class="gallery-image">
+                            <img src="assets/screen_Paris_France_PNEO_HD15_20220416.jpg" alt="Fractal patterns in nature" class="gallery-image">
+                            <span class="gallery-caption">Vista aerea di Parigi, in Francia.</span>
                         </div>
                     </div>
 
@@ -419,7 +436,6 @@
                                 <canvas id="kochCurveCanvas"></canvas>
                             </div>
                             <div class="controls">
-                                <div class="fractal-name">Curva di Koch</div>
                                 <div class="control-group">
                                     <label>iterazioni</label>
                                     <div class="iterations">4</div>
@@ -449,7 +465,7 @@
                                 <canvas id="kochSnowflakeCanvas"></canvas>
                             </div>
                             <div class="controls">
-                                <div class="fractal-name">Fiocco di neve di Koch</div>
+                               
                                 <div class="control-group">
                                     <label>iterazioni</label>
                                     <div class="iterations">4</div>
@@ -479,7 +495,7 @@
                                 <canvas id="kochInvertedCanvas"></canvas>
                             </div>
                             <div class="controls">
-                                <div class="fractal-name">Antifiocco di neve di Koch</div>
+                                
                                 <div class="control-group">
                                     <label>iterazioni</label>
                                     <div class="iterations">4</div>
@@ -510,7 +526,7 @@
                                 <canvas id="sierpinskiCanvas"></canvas>
                             </div>
                             <div class="controls">
-                                <div class="fractal-name">Triangolo di Sierpinski</div>
+                               
                                 <div class="control-group">
                                     <label>iterazioni</label>
                                     <div class="iterations">4</div>
@@ -536,7 +552,7 @@
                             <canvas id="mandelbrotCanvas"></canvas>
                         </div>
                         <div class="controls">
-                            <div class="fractal-name">Insieme di Mandelbrot</div>
+                           
                             <div class="control-group">
                                 <label>iterazioni</label>
                                 <div class="iterations">100</div>
